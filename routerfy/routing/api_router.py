@@ -9,13 +9,15 @@ class APIRouter():
     def __init__(
         self, 
         *,
-        prefix: str = "", 
+        prefix: str = None, 
     ) -> None:
         
-        if prefix:
+        if prefix is None:
+            prefix = ""
+        else:
             assert prefix.startswith("/"), "A path prefix must start with '/'"
             assert not prefix.endswith("/"), "A path prefix must not end with '/'"
-        
+
         self.routes: List[Route] = []
         self.prefix = prefix
     
@@ -114,6 +116,3 @@ class APIRouter():
     
     def options(self,path: str, *args, **kwargs):
         return self.add_api_router(path, method="OPTIONS")
-    
-    def head(self, path: str, *args, **kwargs):
-        return self.add_api_router(path, method="HEAD")

@@ -4,9 +4,9 @@ Routerfy is an easy, fast and modern framework for building AWS Serverless appli
 
 ---
 
-**Documentation**: <a href="" target="_blank">Docs</a>
+**Documentation**: <a href="https://routerfy.github.io/" target="_blank">Docs</a>
 
-**Source Code**: <a href="https://github.com/routerfy/routerfy/" target="_blank">GitHub</a>
+**Source Code**: <a href="https://github.com/routerfy/routerfy/">GitHub</a>
 
 ---
 

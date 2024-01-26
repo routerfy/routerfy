@@ -1,5 +1,6 @@
 site_name: Routerfy
 theme:
+  favicon: assets/logo.svg
   logo: assets/logo.svg
   name: material
   features:
@@ -10,6 +11,7 @@ theme:
     primary: indigo
     
 markdown_extensions:
+  - tables
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
