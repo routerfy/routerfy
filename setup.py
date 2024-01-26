@@ -2,8 +2,7 @@ from setuptools import setup, find_packages
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
-with open("dev_requirements.txt", "r", encoding="utf-8") as fh:
-    dev_requirements = fh.read()
+
     
 setup(
     name = 'routerfy',
@@ -19,7 +18,7 @@ setup(
     include_package_data=True,
     packages = find_packages(),
     extras_require ={
-        "dev": [dev_requirements]
+        "dev": ["click>=7.1.2", "fastapi==0.108.0", "uvicorn==0.25.0", "python-dotenv", "pyyaml"]
     },
     python_requires='>=3.7',
     classifiers=[
