@@ -1,0 +1,20 @@
+site_name: Routerfy
+theme:
+  logo: assets/logo.svg
+  name: material
+  features:
+    - navigation.tabs
+    - content.code.copy
+  palette: 
+    scheme: slate
+    primary: indigo
+    
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+

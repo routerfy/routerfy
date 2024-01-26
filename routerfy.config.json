@@ -1,0 +1,148 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://example.com/routerfy.config.yaml",
+    "title": "Routerfy Config Schema",
+    "description": "Routerfy Configuration File linter",
+    "type": "object",
+    "properties": {
+        "AppName": {
+            "type": "string",
+            "description": "Application Name. Will be used to name some resources on AWS Templates."
+        },
+        "Api": {
+            "type": "object",
+            "description": "Api resource configuration.",
+            "properties": {
+                "Name": {
+                    "type": "string",
+                    "description": "AWS API Gateway template Logical ID."
+                },
+                "StageName": {
+                    "type": "string",
+                    "description": "AWS API Gateway instance Stage Name."
+                },
+                "BuildModel": {
+                    "type": "boolean",
+                    "description": "If routerfy should build models inserted on APIRouter routes."
+                },
+                "Cors": {
+                    "type": "object",
+                    "AllowCredentials": {
+                        "type": "string"
+                    },
+                    "AllowHeaders": {
+                        "type": "string"
+                    },
+                    "AllowMethods": {
+                        "type": "string"
+                    },
+                    "AllowOrigins": {
+                        "type": "string"
+                    },
+                    "ExposeHeaders": {
+                        "type": "string"
+                    },
+                    "MaxAge":{
+                        "type": "integer"
+                    }
+                }
+            },
+            "required": ["StageName"]
+        },
+        "Routes": {
+            "type": "object",
+            "description": "Routerfy lambda routes configuration.",
+            "properties":{
+                "Dir": {
+                    "type": "string",
+                    "description": "Directory lambda folders can be found. Begin without './', example: 'my/path/to/lambdas'"
+                }
+            }
+        },
+        "Global": {
+            "type": "object",
+            "description": "Routerfy AWS Template configuration for all project templates, same as AWS Template except by Resources and Outputs keys. Ref: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/gettingstarted.templatebasics.html",
+            "properties": {
+                "AWSTemplateFormatVersion": {
+                    "type": "string"
+                },
+                "Description": {
+                    "type": "string"
+                },
+                "Metadata": {
+                    "type": "object"
+                },
+                "Parameters": {
+                    "type": "object"
+                },
+                "Rules": {
+                    "type": "object"
+                },
+                "Mappings": {
+                    "type": "object"
+                },
+                "Conditions": {
+                    "type": "object"
+                },
+                "Transform": {
+                    "type": "array"
+                }
+            }
+        },
+        "Local": {
+            "type": "object",
+            "description": "Routerfy AWS Template configuration for specific resource template, same as AWS Template. For default use {AppName}_API for API name reference. Ref: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/gettingstarted.templatebasics.html",
+            "properties":{
+                "^([A-Z]|[a-z])+$": {
+                    "type": "object",
+                    "properties":{
+                        "AWSTemplateFormatVersion": {
+                            "type": "string"
+                        },
+                        "Description": {
+                            "type": "string"
+                        },
+                        "Metadata": {
+                            "type": "object"
+                        },
+                        "Parameters": {
+                            "type": "object"
+                        },
+                        "Rules": {
+                            "type": "object"
+                        },
+                        "Mappings": {
+                            "type": "object"
+                        },
+                        "Conditions": {
+                            "type": "object"
+                        },
+                        "Transform": {
+                            "type": "array"
+                        },
+                        "Resources": {
+                            "type": "object"
+                        },
+                        "Outputs": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "GlobalLambdaProperties": {
+            "type": "object",
+            "description": "Routerfy AWS Template Properties configuration for all lambda template on project. Ref: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html"
+        },
+        "LocalLambdaProperties": {
+            "type": "object",
+            "description": "Routerfy AWS Template Properties configuration for specific lambda template. By default, reference the lambda by folder name on your routes directory. Ref: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html",
+            "properties":{
+                "^([A-Z]|[a-z]|_|-)+$": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
+    
