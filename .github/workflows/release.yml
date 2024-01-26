@@ -15,8 +15,12 @@ jobs:
       url: https://pypi.org/p/routerfy
     permissions:
       id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
+      contents: write  # autorelease repository changes
+      actions: write   # GH pages workflow-dispatch
     steps:
-    # retrieve your distributions here
-
+    - name: Build Package
+      run: python setup.py sdist bdist_wheel
     - name: Publish package distributions to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+          packages-dir: dist/  # the default
