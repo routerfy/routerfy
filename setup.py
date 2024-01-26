@@ -7,7 +7,7 @@ with open("dev_requirements.txt", "r", encoding="utf-8") as fh:
     
 setup(
     name = 'routerfy',
-    version = '0.0.1',
+    version = '1.0.0b1',
     author = 'Bruno Junqueira & Mateus Brazil',
     author_email = 'brunosdsj@gmail.com',
     license = 'MIT',
