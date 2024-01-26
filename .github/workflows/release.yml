@@ -5,24 +5,16 @@ on:
 
 name: release
 
-  
 jobs:
-  pypi-publish:
-    name: Upload release to PyPI
+  pypi:
     runs-on: ubuntu-latest
-    environment:
-      name: pypi
-      url: https://pypi.org/p/routerfy
-    permissions:
-      id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
-      contents: write  # autorelease repository changes
-      actions: write   # GH pages workflow-dispatch
     steps:
-    
-    - name: Build Package
-      run: python ${{ github.workspace }}/setup.py sdist bdist_wheel
-      
-    - name: Publish package distributions to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-          packages-dir: dist/  # the default
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - run: python3 -m pip install --upgrade build && python3 -m build
+      - name: Publish package
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
