@@ -13,7 +13,9 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - name: Check Folder
-        run: ls dist/
+      - name: Manual Build
+        run: python setup.py sdist bdist_wheel
+      - name: Check build folder
+        run: ls ./dist/
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
