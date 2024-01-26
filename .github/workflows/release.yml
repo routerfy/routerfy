@@ -13,7 +13,7 @@ jobs:
     permissions:
       id-token: write
     steps:
+      - name: Check Folder
+        run: ls dist/
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          packages-dir: /dist
