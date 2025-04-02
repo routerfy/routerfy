@@ -13,7 +13,7 @@ setup(
     description = 'O Routerfy tem uma sintaxe similar ao FastAPI. Feito para ser leve e de fácil uso para serviços AWS Serverless.',
     long_description = long_description,
     long_description_content_type = "text/markdown",
-    url = 'https://github.pactual.net/bruno-s-junqueira/routerfy',
+    url = 'https://github.com/routerfy/routerfy/',
     py_modules = ['routerfy'],
     include_package_data=True,
     packages = find_packages(),
